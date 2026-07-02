@@ -327,7 +327,7 @@ Create a bucket using Console or AWS CLI.
 
 ```bash
 aws s3api create-bucket \
-  --bucket devopsdock-terraform-backend-bucket \
+  --bucket devopsdock-terraform-backend-bucket-456 \
   --region us-east-1
 ```
 
@@ -336,12 +336,12 @@ Enable versioning and bucket encryption:
 ```bash
 # Enable versioning
 aws s3api put-bucket-versioning \
-  --bucket devopsdock-terraform-backend-bucket \
+  --bucket devopsdock-terraform-backend-bucket-456 \
   --versioning-configuration Status=Enabled
 
 # Enable encryption
 aws s3api put-bucket-encryption \
-  --bucket devopsdock-terraform-backend-bucket \
+  --bucket devopsdock-terraform-backend-bucket-456 \
   --server-side-encryption-configuration '{
     "Rules":[{
       "ApplyServerSideEncryptionByDefault":{
@@ -357,7 +357,7 @@ Add this below backend block in `terraform.tf` file
 ```bash
 terraform {
   backend "s3" {
-    bucket = "devopsdock-terraform-backend-bucket"
+    bucket = "devopsdock-terraform-backend-bucket-456"
     key    = "s3-backend"
     region = "us-east-1"
   }
